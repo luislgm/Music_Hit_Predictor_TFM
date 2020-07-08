@@ -93,6 +93,10 @@ class Music_Data:
                 # we create the search string that spotify needs
                 Searched = str (entry.title + " " + artist_sp)
                 track = self._sp.search(Searched)
+                if track["tracks"]["total"] == 0:
+                    title_sp = re.sub(r'\w*[*]\w*', '', entry.title)
+                    Searched = str (title_sp + " " + artist_sp)
+                    track = self._sp.search(Searched)
                 # In case the title was not found, a error message is displayed and is not added to the dataframe.
                 if track["tracks"]["total"] > 0:
                     id_track = track["tracks"]["items"][0]["uri"]
