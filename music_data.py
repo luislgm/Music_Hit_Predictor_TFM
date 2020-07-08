@@ -240,6 +240,13 @@ class Music_Data:
                 playlists = None
         return df
     def Get_Lyrics (self, df):
+        """ function that given a dataframe with songs previously generated with Get_User_Playlist_Data,
+        adds the lyrics of the songs to each one of them.
+        Arguments:
+            df {[pd.DataFrame]} -- Dataframe previously generated with the function Get_User_Playlist_Data.
+        Returns:
+             [pd.DataFrame] -- Dataframe with added song lyrics.
+        """
         df_lyrics = pd.DataFrame.copy(df)
         df_lyrics.assign(lyric=None)
 
@@ -276,5 +283,9 @@ class Music_Data:
             else:
                 lyric = song.lyrics
 
+            if song:
+                print ("Added lyric:", item["title"],"Artist:",item["artist"])
+            else:
+                print ("\033[0;00;41mNot found lyric:", item["title"],"Artist:",item["artist"],"\033[0;00;00m")
             df_lyrics.loc[i,"lyric"]=lyric
         return df_lyrics
