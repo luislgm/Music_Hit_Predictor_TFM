@@ -131,8 +131,10 @@ class Music_Data:
                                    "mode","speechiness","acousticness","instrumentalness","liveness", "valence",
                                    "tempo","time_signature","popularity_artist","popularity_song","genres","label"))
 
+        # All user playlists are obtained
         playlists = self._sp.user_playlists(user)
         while playlists:
+            # For each playlist, all the songs will be taken to obtain the information of each one of them.
             for i, playlist in enumerate(playlists['items']):
                 print("%4d %s %s" % (i + 1 + playlists['offset'], playlist['uri'],  playlist['name']))  
                 tracks = self._sp.playlist_tracks(playlists["items"][i]["id"])
@@ -154,6 +156,84 @@ class Music_Data:
                                        track_feature[0]["valence"],track_feature[0]["tempo"],
                                        track_feature[0]["time_signature"], artist_info['popularity'], popularity_song,
                                        artist_info["genres"], album["label"])
+            if playlists['next']:
+                playlists = sp.next(playlists)
+            else:
+                playlists = None
+        return df
+    def Get_User_Playlist_Data_Lyrics (self, user):
+        """ function that allows to obtain from a specific user all the information of his songs
+        that appear in his public playlists and his lyrics.
+        Arguments:
+            user {[str]} -- User from whom you want to get all the data from your playlists.
+        Returns:
+             [pd.DataFrame] -- dataframe that contains all the information described.
+        """
+        df = pd.DataFrame(columns=('artist','title',"id", "release_date", "danceability","energy","key","loudness",
+                                   "mode","speechiness","acousticness","instrumentalness","liveness", "valence",
+                                   "tempo","time_signature","popularity_artist","popularity_song","genres","label",
+                                   "lyric"))
+
+        # All user playlists are obtained
+        playlists = self._sp.user_playlists(user)
+        while playlists:
+            # For each playlist, all the songs will be taken to obtain the information of each one of them.
+            for i, playlist in enumerate(playlists['items']):
+                print("%4d %s %s" % (i + 1 + playlists['offset'], playlist['uri'],  playlist['name']))  
+                tracks = self._sp.playlist_tracks(playlists["items"][i]["id"])
+                for i, track in enumerate(tracks['items']):
+                    id_track = track["track"]["id"]
+                    track = self._sp.track(track["track"]["id"])
+                    album = self._sp.album(track["album"]["uri"])
+                    release_date = track["album"]["release_date"]
+                    popularity_song = track['popularity']
+                    artist_info = self._sp.artist(track["album"]['artists'][0]["uri"])
+                    track_feature= self._sp.audio_features (id_track)
+                    
+                    # We remove those words in parentheses. Since they cause problems in search in Genius
+                    title_ge = re.sub(r'\([^)]*\)', '', track["name"])
+                    # Due to the excess of requests made, in case of denial of the request, we waited long enough to request it
+                    # again.
+                    try:
+                        song = self._genius.search_song(title_ge,artist=track["artists"][0]["name"])
+                    except:
+                        time.sleep(5*60)
+                        song = self._genius.search_song(title_ge,artist=track["artists"][0]["name"])
+                        
+                    if not song:
+                    # If we can't find the song, it may be that the search contains "*" characters. Genius does not usually
+                    # contain the ones in the name songs or name artist, but the explicit word appears. We eliminate the
+                    # word, since the search will give correct, with the other information.
+                        artist_ge = re.sub(r'\w*[*]\w*', '', track["artists"][0]["name"])
+                        title_ge = re.sub(r'\w*[*]\w*', '', title_ge)
+                        song = self._genius.search_song(title_ge,artist=artist_ge)
+                        if song:
+                            lyric = song.lyrics
+                        else:
+                            # Certain main artists can be difficult to find in genius because of how they appear on
+                            # billboard, so we are left with the first word of the artist in case the previous searches
+                            # have not worked.
+                            artist_ge = artist_ge.split (" ")[0]
+                            song = self._genius.search_song(title_ge,artist=artist_ge)
+                            if song:
+                                lyric = song.lyrics
+                            else:
+                                lyric = np.nan
+                    else:
+                        lyric = song.lyrics
+
+                    df.loc[len(df)] = (track["artists"][0]["name"],track["name"],id_track,
+                                       release_date, track_feature[0]["danceability"],
+                                       track_feature[0]["energy"], track_feature[0]["key"],
+                                       track_feature[0]["loudness"],track_feature[0]["mode"],
+                                       track_feature[0]["speechiness"],track_feature[0]["acousticness"],
+                                       track_feature[0]["instrumentalness"],track_feature[0]["liveness"],
+                                       track_feature[0]["valence"],track_feature[0]["tempo"],
+                                       track_feature[0]["time_signature"], artist_info['popularity'], popularity_song,
+                                       artist_info["genres"], album["label"], lyric)
+                    
+                    print ("Added song:", track["name"], "Artist:", track["artists"][0]["name"])
+            
             if playlists['next']:
                 playlists = sp.next(playlists)
             else:
