@@ -239,3 +239,42 @@ class Music_Data:
             else:
                 playlists = None
         return df
+    def Get_Lyrics (self, df):
+        df_lyrics = pd.DataFrame.copy(df)
+        df_lyrics.assign(lyric=None)
+
+        for i, item in df.iterrows():
+            # We remove those words in parentheses. Since they cause problems in search in Genius
+            title_ge = re.sub(r'\([^)]*\)', '', item["title"])
+            # Due to the excess of requests made, in case of denial of the request, we waited long enough to request it
+            # again.
+            try:
+                song = self._genius.search_song(title_ge,artist=item["artist"])
+            except:
+                time.sleep(5*60)
+                song = self._genius.search_song(title_ge,artist=item["artist"])
+
+            if not song:
+            # If we can't find the song, it may be that the search contains "*" characters. Genius does not usually
+            # contain the ones in the name songs or name artist, but the explicit word appears. We eliminate the
+            # word, since the search will give correct, with the other information.
+                artist_ge = re.sub(r'\w*[*]\w*', '', item["artist"])
+                title_ge = re.sub(r'\w*[*]\w*', '', title_ge)
+                song = self._genius.search_song(title_ge,artist=artist_ge)
+                if song:
+                    lyric = song.lyrics
+                else:
+                # Certain main artists can be difficult to find in genius because of how they appear on
+                # billboard, so we are left with the first word of the artist in case the previous searches
+                # have not worked.
+                    artist_ge = artist_ge.split (" ")[0]
+                    song = self._genius.search_song(title_ge,artist=artist_ge)
+                    if song:
+                        lyric = song.lyrics
+                    else:
+                        lyric = np.nan
+            else:
+                lyric = song.lyrics
+
+            df_lyrics.loc[i,"lyric"]=lyric
+        return df_lyrics
