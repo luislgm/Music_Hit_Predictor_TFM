@@ -23,7 +23,6 @@ class Music_Data:
         """
         client_credentials_manager = SpotifyClientCredentials(client_id=sp_cid, client_secret=sp_secret) 
         self._sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager) 
-        self._token = ge_token
         self._genius = lyricsgenius.Genius(client_access_token=ge_token,verbose=False,
                                 remove_section_headers=True)
         
@@ -50,7 +49,11 @@ class Music_Data:
         delta = datetime.timedelta(days=7)
         while start_date <= end_date:
             formatted_date = start_date.strftime('%Y-%m-%d')
-            chart = billboard.ChartData('hot-100', date = formatted_date, timeout=50)
+            try:
+                chart = billboard.ChartData('hot-100', date = formatted_date, timeout=300)
+            except:
+                time.sleep(3*60)
+                chart = billboard.ChartData('hot-100', date = formatted_date, timeout=300) 
             for entry in chart.entries:
                 # On Billboard the name of the artists is followed by other artists who collaborate on the song.
                 # On Spotify it appears differently, so with the name of the main artist it will be enough to find the
