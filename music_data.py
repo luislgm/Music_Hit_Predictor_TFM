@@ -24,7 +24,7 @@ class Music_Data:
         client_credentials_manager = SpotifyClientCredentials(client_id=sp_cid, client_secret=sp_secret) 
         self._sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager) 
         self._genius = lyricsgenius.Genius(client_access_token=ge_token,verbose=False,
-                                remove_section_headers=True)
+                                remove_section_headers=True, timeout=50)
         
     def Get_Billboard_Data (self, start_date_str, end_date_str):  
         """ function that allows to obtain in a date range,
