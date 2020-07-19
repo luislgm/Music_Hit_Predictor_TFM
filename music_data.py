@@ -98,6 +98,7 @@ class Music_Data:
                 track = self._sp.search(Searched)
                 if track["tracks"]["total"] == 0:
                     title_sp = re.sub(r'\w*[*]\w*', '', entry.title)
+                    title_sp = re.sub(r'\([^)]*\)', '', title_sp)
                     Searched = str (title_sp + " " + artist_sp)
                     track = self._sp.search(Searched)
                 # In case the title was not found, a error message is displayed and is not added to the dataframe.
