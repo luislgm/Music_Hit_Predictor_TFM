@@ -37,12 +37,15 @@ class Music_Data:
             [pd.DataFrame] -- dataframe that contains all the information described.
         """
         # We define dataframe structure
-        df = pd.DataFrame(columns=('artist', 'title',"id",'date_chart',"release_date","rank",
+        df = pd.DataFrame(columns=('artist', 'title',"id",'date_chart',"release_date","collaboration","rank",
                                    "weeks","isNew","peakPos","lastPos","danceability","energy","key","loudness","mode",
                                    "speechiness","acousticness","instrumentalness",
                                    "liveness", "valence", "tempo","time_signature",
                                    "popularity_artist", "popularity_song", "genres", "label", 
                                    "song_lyrics"))
+        
+        # We define function to know if song has collaboration.        
+        collab = lambda a : True if len(a) > 1 else False
 
         start_date = datetime.datetime.strptime(start_date_str, '%d-%m-%Y')
         end_date = datetime.datetime.strptime(end_date_str, '%d-%m-%Y')
@@ -105,19 +108,20 @@ class Music_Data:
                 if track["tracks"]["total"] > 0:
                     id_track = track["tracks"]["items"][0]["uri"]
                     track = self._sp.track(id_track)
+                    collabs = collab(track["artists"])
                     album = self._sp.album(track["album"]["uri"])
                     label = album["label"]
                     release_date = track["album"]["release_date"]
                     popularity_song = track['popularity']
                     artist_info = self._sp.artist(track["album"]['artists'][0]["uri"])
-                    track= self._sp.audio_features(id_track)
-                    df.loc[len(df)] = [artist, entry.title,track[0]["id"], chart.date, release_date,
-                                       entry.rank,entry.weeks,entry.isNew, entry.peakPos, entry.lastPos,
-                                       track[0]["danceability"],track[0]["energy"],track[0]["key"],
-                                       track[0]["loudness"],track[0]["mode"],track[0]["speechiness"],
-                                       track[0]["acousticness"],track[0]["instrumentalness"],
-                                       track[0]["liveness"],track[0]["valence"],track[0]["tempo"],
-                                       track[0]["time_signature"], artist_info['popularity'], 
+                    track_feat = self._sp.audio_features(id_track)
+                    df.loc[len(df)] = [track["artists"][0]["name"],track["name"],id_track, chart.date, release_date,
+                                       collabs, entry.rank,entry.weeks,entry.isNew, entry.peakPos, entry.lastPos,
+                                       track_feat[0]["danceability"],track_feat[0]["energy"],track_feat[0]["key"],
+                                       track_feat[0]["loudness"],track_feat[0]["mode"],track_feat[0]["speechiness"],
+                                       track_feat[0]["acousticness"],track_feat[0]["instrumentalness"],
+                                       track_feat[0]["liveness"],track_feat[0]["valence"],track_feat[0]["tempo"],
+                                       track_feat[0]["time_signature"], artist_info['popularity'], 
                                        popularity_song, artist_info["genres"], label, lyric]
                     print ("Added song:", entry.title, "Artist:", artist)
                 else:
@@ -135,9 +139,13 @@ class Music_Data:
         Returns:
              [pd.DataFrame] -- dataframe that contains all the information described.
         """
-        df = pd.DataFrame(columns=('artist','title',"id", "release_date", "danceability","energy","key","loudness",
+        df = pd.DataFrame(columns=('artist','title',"id", "release_date","collaboration",
+                                   "danceability","energy","key","loudness",
                                    "mode","speechiness","acousticness","instrumentalness","liveness", "valence",
                                    "tempo","time_signature","popularity_artist","popularity_song","genres","label"))
+        
+        # We define function to know if song has collaboration.        
+        collab = lambda a : True if len(a) > 1 else False
 
         # All user playlists are obtained
         playlists = self._sp.user_playlists(user)
@@ -149,20 +157,21 @@ class Music_Data:
                 for i, track in enumerate(tracks['items']):
                     id_track = track["track"]["id"]
                     track = self._sp.track(track["track"]["id"])
+                    collabs = collab(track["artists"])
                     album = self._sp.album(track["album"]["uri"])
                     release_date = track["album"]["release_date"]
                     popularity_song = track['popularity']
                     artist_info = self._sp.artist(track["album"]['artists'][0]["uri"])
-                    track_feature= self._sp.audio_features (id_track)
+                    track_feat= self._sp.audio_features (id_track)
 
                     df.loc[len(df)] = (track["artists"][0]["name"],track["name"],id_track,
-                                       release_date, track_feature[0]["danceability"],
-                                       track_feature[0]["energy"], track_feature[0]["key"],
-                                       track_feature[0]["loudness"],track_feature[0]["mode"],
-                                       track_feature[0]["speechiness"],track_feature[0]["acousticness"],
-                                       track_feature[0]["instrumentalness"],track_feature[0]["liveness"],
-                                       track_feature[0]["valence"],track_feature[0]["tempo"],
-                                       track_feature[0]["time_signature"], artist_info['popularity'], popularity_song,
+                                       release_date, collabs, track_feat[0]["danceability"],
+                                       track_feat[0]["energy"], track_feat[0]["key"],
+                                       track_feat[0]["loudness"],track_feat[0]["mode"],
+                                       track_feat[0]["speechiness"],track_feat[0]["acousticness"],
+                                       track_feat[0]["instrumentalness"],track_feat[0]["liveness"],
+                                       track_feat[0]["valence"],track_feat[0]["tempo"],
+                                       track_feat[0]["time_signature"], artist_info['popularity'], popularity_song,
                                        artist_info["genres"], album["label"])
             if playlists['next']:
                 playlists = sp.next(playlists)
@@ -177,10 +186,14 @@ class Music_Data:
         Returns:
              [pd.DataFrame] -- dataframe that contains all the information described.
         """
-        df = pd.DataFrame(columns=('artist','title',"id", "release_date", "danceability","energy","key","loudness",
-                                   "mode","speechiness","acousticness","instrumentalness","liveness", "valence",
+        df = pd.DataFrame(columns=('artist','title',"id", "release_date", "collaboration",
+                                   "danceability","energy","key","loudness", "mode", "speechiness", 
+                                   "acousticness","instrumentalness","liveness", "valence",
                                    "tempo","time_signature","popularity_artist","popularity_song","genres","label",
-                                   "lyric"))
+                                   "song_lyrics"))
+        
+        # We define function to know if song has collaboration.        
+        collab = lambda a : True if len(a) > 1 else False
 
         # All user playlists are obtained
         playlists = self._sp.user_playlists(user)
@@ -192,11 +205,12 @@ class Music_Data:
                 for i, track in enumerate(tracks['items']):
                     id_track = track["track"]["id"]
                     track = self._sp.track(track["track"]["id"])
+                    collabs = collab(track["artists"])
                     album = self._sp.album(track["album"]["uri"])
                     release_date = track["album"]["release_date"]
                     popularity_song = track['popularity']
                     artist_info = self._sp.artist(track["album"]['artists'][0]["uri"])
-                    track_feature= self._sp.audio_features (id_track)
+                    track_feat= self._sp.audio_features (id_track)
                     
                     # We remove those words in parentheses. Since they cause problems in search in Genius
                     title_ge = re.sub(r'\([^)]*\)', '', track["name"])
@@ -231,13 +245,13 @@ class Music_Data:
                         lyric = song.lyrics
 
                     df.loc[len(df)] = (track["artists"][0]["name"],track["name"],id_track,
-                                       release_date, track_feature[0]["danceability"],
-                                       track_feature[0]["energy"], track_feature[0]["key"],
-                                       track_feature[0]["loudness"],track_feature[0]["mode"],
-                                       track_feature[0]["speechiness"],track_feature[0]["acousticness"],
-                                       track_feature[0]["instrumentalness"],track_feature[0]["liveness"],
-                                       track_feature[0]["valence"],track_feature[0]["tempo"],
-                                       track_feature[0]["time_signature"], artist_info['popularity'], popularity_song,
+                                       release_date, collabs, track_feat[0]["danceability"],
+                                       track_feat[0]["energy"], track_feat[0]["key"],
+                                       track_feat[0]["loudness"],track_feat[0]["mode"],
+                                       track_feat[0]["speechiness"],track_feat[0]["acousticness"],
+                                       track_feat[0]["instrumentalness"],track_feat[0]["liveness"],
+                                       track_feat[0]["valence"],track_feat[0]["tempo"],
+                                       track_feat[0]["time_signature"], artist_info['popularity'], popularity_song,
                                        artist_info["genres"], album["label"], lyric)
                     
                     print ("Added song:", track["name"], "Artist:", track["artists"][0]["name"])
@@ -295,5 +309,5 @@ class Music_Data:
                 print ("Added lyric:", item["title"],"Artist:",item["artist"])
             else:
                 print ("\033[0;00;41mNot found lyric:", item["title"],"Artist:",item["artist"],"\033[0;00;00m")
-            df_lyrics.loc[i,"lyric"]=lyric
+            df_lyrics.loc[i,"song_lyrics"]=lyric
         return df_lyrics
