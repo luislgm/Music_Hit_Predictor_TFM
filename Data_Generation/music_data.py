@@ -104,6 +104,7 @@ class Music_Data:
                 if track["tracks"]["total"] == 0:
                     title_sp = re.sub(r'\w*[*]\w*', '', entry.title)
                     title_sp = re.sub(r'\([^)]*\)', '', title_sp)
+                    title_sp = title_sp.split("/")[0]
                     Searched = str (title_sp + " " + artist_sp)
                     track = self._sp.search(Searched)
                 # In case the title was not found, a error message is displayed and is not added to the dataframe.
@@ -181,7 +182,7 @@ class Music_Data:
                                        artist_info['popularity'], popularity_song,
                                        artist_info["genres"],track["album"]["name"],album["label"])
             if playlists['next']:
-                playlists = sp.next(playlists)
+                playlists = self._sp.next(playlists)
             else:
                 playlists = None
         return df
@@ -266,7 +267,7 @@ class Music_Data:
                     print ("Added song:", track["name"], "Artist:", track["artists"][0]["name"])
             
             if playlists['next']:
-                playlists = sp.next(playlists)
+                playlists = self._sp.next(playlists)
             else:
                 playlists = None
         return df
