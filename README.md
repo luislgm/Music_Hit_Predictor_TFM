@@ -6,9 +6,11 @@ En el proyecto se realizará la extracción de todos los hits musicales desde su
 
 Tras la extracción, se realizará un análisis de los hits a lo largo del tiempo, y se obtendrán conclusiones interesantes.
 
-Otro propósito del proyecto será buscar un modelo de predicción, dados los features obtenidos, predecir si el porcentaje de que una canción sea éxito o no. Para ello se descargarán canciones que no han sido hit aleatoriamente, conformando un dataset de entrenamiento.
+Otro propósito del proyecto será buscar un modelo de predicción, dados los features obtenidos, predecir el porcentaje de que una canción sea éxito o no. Para ello también se descargarán canciones que no han sido hit aleatoriamente, para así conformar un dataset de entrenamiento y test.
 
-## Requerimientos
+Por último, se extraerán las letras de las canciones de los hits según su género musical, para este caso se extraerán las letras de los hits que pertenecen al género pop y al género urban contemporary (R&B, Hip-Hop, Rap, Trap...) y se realizara un pequeño estudio de las letras para estos géneros.
+
+## Requisitos
 
 Para poder ejecutar todos los notebooks del proyecto, se recomienda usar el entorno conda que se proporciona en el fichero environment_tfm.yml
 
@@ -16,9 +18,14 @@ Para la creación del entorno ejecutar:
 ~~~
 conda env create -f environment_tfm.yml
 ~~~
-Para la activacion del entorno:
+Para la activación del entorno:
 ~~~
 conda activate tfm
+~~~
+
+Para ejecutar los cuadernos Jupyter, se han lanzado con Jupyter-lab, que es la herramienta que se incluye en el entorno.
+~~~
+Jupyter-lab
 ~~~
 
 Para la extracción de los datos, es necesario estar identificado y tener los token pertinentes para el uso de la API de Spotify y la API de Genius.
@@ -31,35 +38,58 @@ En el proyecto se pueden observar las siguientes carpetas:
   - Data
   - Data_Generation
   - Hit_Data_Analysis
+  - Models
   - Predictive_Modelling
 
-<b>Data</b> será donde se almacenen todos los datos generados en formato csv, esta carpeta estará vaciá en git. Los datos podrán ser generados siguiendo los notebook de la carpeta Data_Generation. Por comodidad y ya que la generación de datos es un proceso que requiere bastante tiempo, se facilitan los ficheros en el siguiente link de Google Drive.
+<b>Data</b> será donde se almacenen todos los datos generados en formato csv, esta carpeta estará vacía en git. Los datos podrán ser generados siguiendo los notebooks de la carpeta Data_Generation. Por comodidad y, ya que la generación de datos es un proceso que requiere bastante tiempo, se facilitan los ficheros en el siguiente [enlace](https://drive.google.com/drive/folders/1NyCAPqVdK4ZcOPovaSirImuEoe7fceAl?usp=sharing) de Google Drive.
 
-<b>Data_Generation</b>, contendrá todos los notebooks y paquetes necesarios para la realización de la extracción de los datos.
+<b>Data_Generation</b>, contiene todos los notebooks y paquetes necesarios para la realización de la extracción de los datos.
 
-<b>Hit_Data_Analysis</b>, contiene los notebook en los que se realiza el análisis de los datos de las canciones que han sido hit.
+<b>Hit_Data_Analysis</b>, contiene los notebooks en los que se realiza el análisis de los datos de las canciones que han sido hit.
 
-<b>Predictive_Modelling</b>, es donde se incluyen los notebook para buscar el mejor modelo de predicción.
+<b>Models</b>, contiene todos los modelos entrenados en formato .pkl
+
+<b>Predictive_Modelling</b>, es donde se incluyen los notebooks para buscar el mejor modelo de predicción.
 
 ## Orden de lectura del proyecto
 
-A continuación se explicara la secuencia de lectura de los notebook para ver todo el proceso llevado a cabo.
+A continuación se explicará la secuencia de lectura de los notebooks para ver todo el proceso llevado a cabo.
 
 Lo primero es la generación de datos. Todo lo necesario para ello se encuentra dentro del directorio <b>Data_Generation</b>.
 Se ha desarrollado un Objeto, que incluye diferentes funciones para extraer los datos, esta se encuentre en music_data.py.
 
-1_data_hits_extraction.ipynb en este notebook se muestran ejemplos de la extracción de hits.
+El orden de lectura es el siguiente:
 
-2_data_hits_fusion.ipynb en este notebook se realiza la fusión de todos los datos generados en el cuaderno anterior.
+1_data_hits_extraction.ipynb en este notebook se muestran ejemplos de la extracción de *hits*.
 
-3_data_random_extract.ipynb en este notebook se realiza la extraccion de canciones aleatorias, que posteriormente se fusionaran con los hits para tener un dataset que podamos usar para entrenar usando las técnicas de machine learning.
+2_data_hits_fusion.ipynb en este notebook se realiza la fusión de todos los *hits* generados en el cuaderno anterior.
 
-4_data_fusion_all.ipynb en este notebook se realiza la fusión de los datos aleatorios con los hits.
+A continuación se realizó un análisis de los *hits*, esto se encuentra dentro del directorio <b>Hit_Data_Analysis</b>.
 
-A continuación se realizo un análisis de los hits, esto se encuentra dentro del directorio <b>Hit_Data_Analysis</b>.
+1_hit_analysis.ipynb en este cuaderno se realiza un estudio de los *hits* obtenidos.
 
-1_hit_analysis.ipynb en este cuaderno se realiza un estudio de los datos obtenidos.
+A continuación, y ya que vamos a usar modelos de predicción muy sensible a *outliers*, será según lo observado en el cuaderno 1_hit_analysis.ipynb, hacer una limpieza de estos *outliers* para así aunque hayan sido *hit* conseguir un modelo más generalizable. Esta parte se encuentra dentro del directorio <b>Predictive_Modelling</b> y corresponde con el cuaderno 3_clean_dataset.ipynb.
 
-Tras este punto se trabajo en la búsqueda de un modelo de predicción, esto se encuentra en el directorio <b>Predictive_Modelling</b>.
+Lo siguiente que hicimos es generar un dataset que poder entrenar, para ello se han extraído datos de canciones aleatorias de los cuales nos quedaríamos con aquellas que no son *hit* y lo fusionaríamos con el dataset del cuaderno 3_clean_dataset.ipynb. Esto es hace en el cuaderno 3_data_random_extract.ipynb y 4_data_fusion_all.ipynb.
 
-1_looking_predictive_model.ipynb, en este cuaderno se realizan diferentes pruebas aplicando diferente modelos y realizando un estudio de los resultados obtenidos.
+Una vez generados nuestros datasets a entrenar, pasamos a la parte de aprendizaje supervisado, donde probaremos diferentes modelos y manipularemos los hiperparametros de estos para tratar de conseguir la mejor predicción. Esto se hace en los cuadernos 1_looking_predictive_model.ipynb y 2_looking_predictive_model_93_20.ipynb dentro del directorio <b>Predictive_Modelling</b>.
+
+Tras entrenar los diferentes modelos se ha, realizado un pequeño test con *hits* que salieron posteriores a la fecha de creación del dataset y a ver si nuestros modelos son capaces de predecirlos como *hit*, esto se hace en el cuaderno 4_model_testing.ipynb.
+
+Por último se hizo un pequeño análisis de lenguaje natural para los *hits* pertenecientes al género *pop* y al género *urban contemporary*. Para ello se hizo una extracción de las letras de las canciones de estos, que se realiza en el cuaderno 5_extract_lyrics_by_genre.ipynb dentro del directorio <b>Data_Generation</b>.
+
+El análisis de estas letras de canciones se realiza en el cuaderno 3_analysis_lyrics.ipynb dentro del directorio <b>Hit_Data_Analysis</b>.
+
+A continuación se muestran el orden de lectura de los *notebooks* de manera resumida.
+
+  1. 1_data_hits_extraction.ipynb (<b>Data_Generation</b>)
+  2. 2_data_hits_fusion.ipynb (<b>Data_Generation</b>)
+  3. 1_hit_analysis.ipynb (<b>Hit_Data_Analysis</b>)
+  4. 3_clean_dataset.ipynb (<b>Predictive_Modelling</b>)
+  5. 3_data_random_extract.ipynb (<b>Data_Generation</b>)
+  6. 4_data_fusion_all.ipynb (<b>Data_Generation</b>)
+  7. 1_looking_predictive_model.ipynb (<b>Predictive_Modelling</b>)
+  8. 2_looking_predictive_model_93_20.ipynb (<b>Predictive_Modelling</b>)
+  9. 4_model_testing.ipynb (<b>Predictive_Modelling</b>)
+  10. 5_extract_lyrics_by_genre.ipynb (<b>Data_Generation</b>)
+  11. 3_analysis_lyrics.ipynb (<b>Hit_Data_Analysis</b>)
