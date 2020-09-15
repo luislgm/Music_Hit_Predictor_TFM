@@ -23,7 +23,7 @@ Para la activación del entorno:
 conda activate tfm
 ~~~
 
-Para ejecutar los cuadernos Jupyter, se han lanzado con Jupyter-lab, que es la herramienta que se incluye en el entorno.
+Para ejecutar los cuadernos Jupyter, estos se han lanzado con Jupyter-lab, que es la herramienta que se incluye en el entorno.
 ~~~
 Jupyter-lab
 ~~~
@@ -31,6 +31,13 @@ Jupyter-lab
 Para la extracción de los datos, es necesario estar identificado y tener los token pertinentes para el uso de la API de Spotify y la API de Genius.
   - Para crear un "client id" para usar la API de spotify, seguir los pasos que se indican en el [enlace](https://developer.spotify.com/documentation/general/guides/app-settings/).
   - Para crear un "client_id" para usar la API de Genius. Es necesario seguir los pasos que se indican en el [enlace](https://docs.genius.com/#/getting-started-h1).
+
+Para ejecutar la aplicación de streamlit, antes de hacerlo es necesario sustituir los strings 'spotipy_id' y 'secret_id' en la función SpotifyClientCredentials, por los tokens obtenidos según se detalla en el párrafo anterior. En los demás sitios donde se deben añadir estos tokens se indicará claramente, al leer los cuadernos jupyter.
+
+Para ejecutar la aplicación con streamlit.
+~~~
+streamlit run app_streamlit.py
+~~~
 
 ## Estructura del proyecto
 
@@ -53,7 +60,7 @@ En el proyecto se pueden observar las siguientes carpetas:
 
 ## Orden de lectura del proyecto
 
-A continuación se explicará la secuencia de lectura de los notebooks para ver todo el proceso llevado a cabo.
+En este punto se explicará la secuencia de lectura de los cuadernos para ver todo el proceso llevado a cabo, al final del punto se indicará el orden también en modo lista.
 
 Lo primero es la generación de datos. Todo lo necesario para ello se encuentra dentro del directorio <b>Data_Generation</b>.
 Se ha desarrollado un Objeto, que incluye diferentes funciones para extraer los datos, esta se encuentre en music_data.py.
@@ -79,6 +86,8 @@ Tras entrenar los diferentes modelos se ha, realizado un pequeño test con *hits
 Por último se hizo un pequeño análisis de lenguaje natural para los *hits* pertenecientes al género *pop* y al género *urban contemporary*. Para ello se hizo una extracción de las letras de las canciones de estos, que se realiza en el cuaderno 5_extract_lyrics_by_genre.ipynb dentro del directorio <b>Data_Generation</b>.
 
 El análisis de estas letras de canciones se realiza en el cuaderno 3_analysis_lyrics.ipynb dentro del directorio <b>Hit_Data_Analysis</b>.
+
+Por último se incluye una pequeña aplicación gráfica que se ejecutará a través de streamlit y nos permitirá predecir cualquier canción de la que indiquemos su artista y titulo y seleccionando el modelo que queramos nos dirá la probabilidad de ser un *hit*. Esta aplicación se encuentra en el directorio raíz con el nombre app_streamlit.py y para ser ejecutada seguir los pasos del punto Requerimientos.
 
 A continuación se muestran el orden de lectura de los *notebooks* de manera resumida.
 
