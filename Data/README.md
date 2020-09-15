@@ -1,0 +1,2 @@
+# Almacenamiento de ficheros
+Tanto si se generan los ficheros siguiendo los cuadernos como si se descargan, estos deben de estar almacenados en este directorio para poder ejecutar todo el código del proyecto correctamente.
