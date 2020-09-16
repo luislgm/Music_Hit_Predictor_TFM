@@ -4,6 +4,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - pip
   - pandas=1.1.1
   - numpy=1.19.1
   - matplotlib=3.3.1
@@ -15,6 +16,7 @@ dependencies:
   - vega_datasets=0.8.0
   - requests=2.24.0
   - jupyterlab=2.2.6
+  - notebook=6.1.1
   - python=3.7.9
   - ipykernel=5.3.4
   - pip:
