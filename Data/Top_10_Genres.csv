@@ -1,0 +1,601 @@
+genre,count,year
+rock,68.0,1958
+adult standards,63.0,1958
+pop,56.0,1958
+soul,27.0,1958
+country,12.0,1958
+folk,8.0,1958
+funk,2.0,1958
+quiet storm,2.0,1958
+rock,181.0,1959
+pop,160.0,1959
+adult standards,141.0,1959
+soul,65.0,1959
+country,22.0,1959
+folk,21.0,1959
+funk,6.0,1959
+quiet storm,5.0,1959
+dance,1.0,1959
+urban contemporary,1.0,1959
+pop,206.0,1960
+rock,206.0,1960
+adult standards,176.0,1960
+soul,85.0,1960
+folk,29.0,1960
+country,22.0,1960
+funk,8.0,1960
+quiet storm,6.0,1960
+pop,217.0,1961
+rock,207.0,1961
+adult standards,188.0,1961
+soul,108.0,1961
+folk,36.0,1961
+funk,18.0,1961
+quiet storm,17.0,1961
+country,15.0,1961
+dance,3.0,1961
+pop,234.0,1962
+adult standards,195.0,1962
+rock,188.0,1962
+soul,125.0,1962
+folk,51.0,1962
+funk,23.0,1962
+quiet storm,19.0,1962
+country,13.0,1962
+dance,4.0,1962
+pop,259.0,1963
+adult standards,201.0,1963
+rock,186.0,1963
+soul,151.0,1963
+folk,72.0,1963
+funk,32.0,1963
+quiet storm,18.0,1963
+country,10.0,1963
+dance,5.0,1963
+pop,262.0,1964
+rock,241.0,1964
+soul,186.0,1964
+adult standards,162.0,1964
+folk,97.0,1964
+funk,46.0,1964
+quiet storm,40.0,1964
+country,15.0,1964
+dance,11.0,1964
+urban contemporary,1.0,1964
+pop,291.0,1965
+rock,284.0,1965
+adult standards,179.0,1965
+soul,177.0,1965
+folk,171.0,1965
+funk,46.0,1965
+quiet storm,42.0,1965
+country,38.0,1965
+dance,23.0,1965
+urban contemporary,2.0,1965
+rock,293.0,1966
+pop,288.0,1966
+folk,195.0,1966
+soul,177.0,1966
+adult standards,141.0,1966
+funk,58.0,1966
+country,49.0,1966
+quiet storm,45.0,1966
+dance,28.0,1966
+urban contemporary,4.0,1966
+pop,277.0,1967
+rock,273.0,1967
+soul,207.0,1967
+folk,181.0,1967
+adult standards,137.0,1967
+funk,79.0,1967
+country,54.0,1967
+quiet storm,45.0,1967
+dance,26.0,1967
+pop,233.0,1968
+rock,230.0,1968
+soul,204.0,1968
+folk,155.0,1968
+adult standards,108.0,1968
+funk,91.0,1968
+quiet storm,67.0,1968
+country,50.0,1968
+dance,33.0,1968
+urban contemporary,4.0,1968
+rock,236.0,1969
+pop,216.0,1969
+soul,198.0,1969
+folk,150.0,1969
+adult standards,100.0,1969
+funk,86.0,1969
+country,83.0,1969
+quiet storm,68.0,1969
+dance,31.0,1969
+urban contemporary,2.0,1969
+rock,229.0,1970
+pop,176.0,1970
+soul,172.0,1970
+folk,138.0,1970
+country,93.0,1970
+funk,83.0,1970
+quiet storm,77.0,1970
+adult standards,76.0,1970
+dance,48.0,1970
+urban contemporary,5.0,1970
+rock,251.0,1971
+soul,158.0,1971
+pop,148.0,1971
+folk,141.0,1971
+country,106.0,1971
+adult standards,95.0,1971
+funk,86.0,1971
+quiet storm,78.0,1971
+dance,50.0,1971
+urban contemporary,2.0,1971
+rock,248.0,1972
+soul,151.0,1972
+folk,138.0,1972
+pop,136.0,1972
+country,95.0,1972
+funk,89.0,1972
+quiet storm,77.0,1972
+adult standards,66.0,1972
+dance,61.0,1972
+urban contemporary,10.0,1972
+rock,215.0,1973
+soul,159.0,1973
+pop,134.0,1973
+folk,117.0,1973
+funk,113.0,1973
+quiet storm,94.0,1973
+country,84.0,1973
+adult standards,81.0,1973
+dance,67.0,1973
+urban contemporary,9.0,1973
+rock,211.0,1974
+soul,159.0,1974
+funk,120.0,1974
+pop,114.0,1974
+folk,108.0,1974
+quiet storm,103.0,1974
+country,102.0,1974
+dance,93.0,1974
+adult standards,68.0,1974
+urban contemporary,9.0,1974
+rock,225.0,1975
+soul,132.0,1975
+dance,119.0,1975
+folk,116.0,1975
+pop,111.0,1975
+country,103.0,1975
+funk,99.0,1975
+quiet storm,90.0,1975
+adult standards,82.0,1975
+urban contemporary,9.0,1975
+rock,234.0,1976
+dance,113.0,1976
+soul,112.0,1976
+pop,108.0,1976
+country,93.0,1976
+folk,91.0,1976
+adult standards,82.0,1976
+quiet storm,81.0,1976
+funk,77.0,1976
+urban contemporary,14.0,1976
+rock,243.0,1977
+pop,116.0,1977
+dance,101.0,1977
+folk,100.0,1977
+country,92.0,1977
+soul,82.0,1977
+adult standards,76.0,1977
+funk,70.0,1977
+quiet storm,65.0,1977
+urban contemporary,16.0,1977
+rock,237.0,1978
+pop,106.0,1978
+folk,97.0,1978
+dance,97.0,1978
+country,88.0,1978
+adult standards,73.0,1978
+soul,64.0,1978
+funk,55.0,1978
+quiet storm,53.0,1978
+urban contemporary,16.0,1978
+rock,239.0,1979
+pop,135.0,1979
+dance,119.0,1979
+folk,91.0,1979
+country,82.0,1979
+soul,57.0,1979
+adult standards,50.0,1979
+funk,47.0,1979
+quiet storm,41.0,1979
+urban contemporary,15.0,1979
+rock,266.0,1980
+pop,126.0,1980
+folk,100.0,1980
+country,100.0,1980
+dance,93.0,1980
+adult standards,71.0,1980
+soul,58.0,1980
+funk,49.0,1980
+quiet storm,47.0,1980
+urban contemporary,15.0,1980
+rock,227.0,1981
+pop,106.0,1981
+dance,87.0,1981
+country,80.0,1981
+folk,70.0,1981
+adult standards,57.0,1981
+soul,56.0,1981
+funk,56.0,1981
+quiet storm,56.0,1981
+urban contemporary,27.0,1981
+rock,258.0,1982
+pop,111.0,1982
+dance,100.0,1982
+country,68.0,1982
+adult standards,59.0,1982
+quiet storm,59.0,1982
+funk,58.0,1982
+soul,53.0,1982
+folk,52.0,1982
+urban contemporary,20.0,1982
+rock,291.0,1983
+pop,162.0,1983
+dance,141.0,1983
+folk,62.0,1983
+country,59.0,1983
+quiet storm,53.0,1983
+soul,51.0,1983
+adult standards,48.0,1983
+funk,46.0,1983
+urban contemporary,25.0,1983
+rock,256.0,1984
+pop,155.0,1984
+dance,147.0,1984
+quiet storm,48.0,1984
+folk,46.0,1984
+funk,45.0,1984
+soul,44.0,1984
+country,33.0,1984
+urban contemporary,32.0,1984
+adult standards,31.0,1984
+rock,229.0,1985
+pop,147.0,1985
+dance,135.0,1985
+quiet storm,57.0,1985
+funk,52.0,1985
+soul,44.0,1985
+urban contemporary,43.0,1985
+country,29.0,1985
+folk,28.0,1985
+adult standards,24.0,1985
+rock,232.0,1986
+pop,149.0,1986
+dance,144.0,1986
+quiet storm,52.0,1986
+funk,49.0,1986
+soul,44.0,1986
+urban contemporary,43.0,1986
+folk,32.0,1986
+country,30.0,1986
+adult standards,18.0,1986
+rock,210.0,1987
+pop,153.0,1987
+dance,137.0,1987
+quiet storm,50.0,1987
+urban contemporary,47.0,1987
+funk,42.0,1987
+soul,39.0,1987
+folk,35.0,1987
+country,28.0,1987
+adult standards,17.0,1987
+rock,218.0,1988
+pop,163.0,1988
+dance,128.0,1988
+urban contemporary,53.0,1988
+quiet storm,44.0,1988
+funk,39.0,1988
+soul,32.0,1988
+folk,24.0,1988
+adult standards,19.0,1988
+country,14.0,1988
+rock,209.0,1989
+pop,164.0,1989
+dance,112.0,1989
+urban contemporary,44.0,1989
+folk,34.0,1989
+quiet storm,29.0,1989
+funk,22.0,1989
+country,19.0,1989
+soul,17.0,1989
+adult standards,11.0,1989
+rock,176.0,1990
+pop,125.0,1990
+dance,106.0,1990
+urban contemporary,54.0,1990
+quiet storm,29.0,1990
+soul,29.0,1990
+funk,28.0,1990
+folk,22.0,1990
+country,14.0,1990
+adult standards,11.0,1990
+rock,141.0,1991
+pop,115.0,1991
+dance,84.0,1991
+urban contemporary,70.0,1991
+quiet storm,41.0,1991
+funk,32.0,1991
+soul,24.0,1991
+folk,19.0,1991
+country,13.0,1991
+adult standards,9.0,1991
+rock,126.0,1992
+pop,106.0,1992
+urban contemporary,94.0,1992
+dance,78.0,1992
+quiet storm,40.0,1992
+funk,34.0,1992
+soul,30.0,1992
+country,13.0,1992
+folk,11.0,1992
+adult standards,8.0,1992
+pop,121.0,1993
+urban contemporary,115.0,1993
+rock,97.0,1993
+dance,86.0,1993
+quiet storm,44.0,1993
+soul,43.0,1993
+funk,35.0,1993
+country,19.0,1993
+folk,8.0,1993
+adult standards,3.0,1993
+urban contemporary,112.0,1994
+pop,110.0,1994
+rock,100.0,1994
+dance,74.0,1994
+soul,41.0,1994
+quiet storm,36.0,1994
+funk,34.0,1994
+country,27.0,1994
+folk,15.0,1994
+adult standards,2.0,1994
+pop,140.0,1995
+urban contemporary,114.0,1995
+rock,93.0,1995
+dance,73.0,1995
+soul,41.0,1995
+quiet storm,38.0,1995
+funk,26.0,1995
+country,17.0,1995
+folk,13.0,1995
+adult standards,7.0,1995
+pop,139.0,1996
+urban contemporary,118.0,1996
+rock,86.0,1996
+dance,79.0,1996
+soul,39.0,1996
+quiet storm,28.0,1996
+funk,20.0,1996
+folk,10.0,1996
+country,10.0,1996
+adult standards,1.0,1996
+pop,130.0,1997
+urban contemporary,114.0,1997
+dance,85.0,1997
+rock,64.0,1997
+soul,50.0,1997
+quiet storm,43.0,1997
+funk,27.0,1997
+country,15.0,1997
+folk,10.0,1997
+adult standards,5.0,1997
+pop,133.0,1998
+urban contemporary,101.0,1998
+dance,81.0,1998
+rock,75.0,1998
+country,36.0,1998
+soul,29.0,1998
+quiet storm,23.0,1998
+folk,9.0,1998
+funk,8.0,1998
+adult standards,2.0,1998
+pop,156.0,1999
+urban contemporary,100.0,1999
+dance,91.0,1999
+country,85.0,1999
+rock,83.0,1999
+soul,41.0,1999
+quiet storm,32.0,1999
+funk,10.0,1999
+folk,5.0,1999
+pop,160.0,2000
+urban contemporary,127.0,2000
+dance,99.0,2000
+rock,66.0,2000
+country,61.0,2000
+soul,45.0,2000
+quiet storm,23.0,2000
+funk,21.0,2000
+folk,1.0,2000
+pop,145.0,2001
+urban contemporary,109.0,2001
+dance,87.0,2001
+country,61.0,2001
+rock,51.0,2001
+soul,32.0,2001
+quiet storm,23.0,2001
+funk,13.0,2001
+adult standards,1.0,2001
+folk,1.0,2001
+pop,164.0,2002
+urban contemporary,137.0,2002
+dance,96.0,2002
+rock,75.0,2002
+country,54.0,2002
+soul,44.0,2002
+quiet storm,13.0,2002
+funk,11.0,2002
+pop,157.0,2003
+urban contemporary,131.0,2003
+dance,94.0,2003
+rock,75.0,2003
+country,60.0,2003
+soul,30.0,2003
+quiet storm,15.0,2003
+funk,11.0,2003
+adult standards,1.0,2003
+folk,1.0,2003
+pop,160.0,2004
+urban contemporary,142.0,2004
+dance,91.0,2004
+rock,72.0,2004
+country,63.0,2004
+soul,32.0,2004
+quiet storm,11.0,2004
+funk,10.0,2004
+folk,2.0,2004
+adult standards,1.0,2004
+pop,182.0,2005
+urban contemporary,144.0,2005
+rock,102.0,2005
+dance,91.0,2005
+country,72.0,2005
+soul,18.0,2005
+quiet storm,11.0,2005
+funk,10.0,2005
+folk,2.0,2005
+adult standards,1.0,2005
+pop,212.0,2006
+urban contemporary,144.0,2006
+rock,110.0,2006
+dance,105.0,2006
+country,66.0,2006
+soul,22.0,2006
+funk,8.0,2006
+quiet storm,4.0,2006
+adult standards,3.0,2006
+folk,2.0,2006
+pop,230.0,2007
+urban contemporary,135.0,2007
+dance,126.0,2007
+rock,103.0,2007
+country,62.0,2007
+soul,14.0,2007
+funk,5.0,2007
+folk,5.0,2007
+quiet storm,3.0,2007
+adult standards,2.0,2007
+pop,244.0,2008
+urban contemporary,159.0,2008
+dance,137.0,2008
+rock,106.0,2008
+country,60.0,2008
+soul,22.0,2008
+folk,4.0,2008
+quiet storm,3.0,2008
+funk,2.0,2008
+adult standards,1.0,2008
+pop,295.0,2009
+dance,156.0,2009
+urban contemporary,155.0,2009
+rock,105.0,2009
+country,70.0,2009
+soul,25.0,2009
+quiet storm,5.0,2009
+funk,1.0,2009
+pop,327.0,2010
+urban contemporary,164.0,2010
+dance,161.0,2010
+rock,79.0,2010
+country,63.0,2010
+soul,18.0,2010
+quiet storm,6.0,2010
+funk,4.0,2010
+adult standards,3.0,2010
+folk,1.0,2010
+pop,350.0,2011
+urban contemporary,171.0,2011
+dance,161.0,2011
+rock,87.0,2011
+country,79.0,2011
+soul,7.0,2011
+funk,5.0,2011
+folk,2.0,2011
+adult standards,2.0,2011
+quiet storm,1.0,2011
+pop,266.0,2012
+urban contemporary,136.0,2012
+dance,129.0,2012
+rock,82.0,2012
+country,70.0,2012
+soul,9.0,2012
+folk,6.0,2012
+funk,1.0,2012
+pop,282.0,2013
+dance,142.0,2013
+urban contemporary,136.0,2013
+rock,87.0,2013
+country,83.0,2013
+soul,10.0,2013
+folk,7.0,2013
+quiet storm,1.0,2013
+adult standards,1.0,2013
+pop,251.0,2014
+dance,136.0,2014
+urban contemporary,115.0,2014
+rock,92.0,2014
+country,78.0,2014
+soul,10.0,2014
+folk,4.0,2014
+adult standards,1.0,2014
+pop,278.0,2015
+urban contemporary,165.0,2015
+dance,138.0,2015
+country,69.0,2015
+rock,66.0,2015
+folk,12.0,2015
+soul,5.0,2015
+funk,1.0,2015
+pop,300.0,2016
+urban contemporary,206.0,2016
+dance,134.0,2016
+country,72.0,2016
+rock,61.0,2016
+soul,22.0,2016
+funk,10.0,2016
+folk,2.0,2016
+pop,307.0,2017
+urban contemporary,246.0,2017
+dance,109.0,2017
+country,69.0,2017
+rock,47.0,2017
+soul,4.0,2017
+folk,3.0,2017
+funk,1.0,2017
+urban contemporary,411.0,2018
+pop,335.0,2018
+dance,89.0,2018
+country,54.0,2018
+rock,43.0,2018
+soul,3.0,2018
+funk,2.0,2018
+adult standards,1.0,2018
+folk,1.0,2018
+urban contemporary,289.0,2019
+pop,283.0,2019
+dance,94.0,2019
+country,63.0,2019
+rock,35.0,2019
+soul,4.0,2019
+adult standards,1.0,2019
+folk,1.0,2019
+urban contemporary,348.0,2020
+pop,260.0,2020
+country,61.0,2020
+dance,55.0,2020
+rock,29.0,2020
+adult standards,9.0,2020
+soul,4.0,2020
+folk,1.0,2020
