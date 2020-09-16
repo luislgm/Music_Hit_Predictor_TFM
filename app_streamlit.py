@@ -286,7 +286,7 @@ def main():
                 prediction = predictor.predict_proba(song)
                 st.write("Hit: ",round(prediction[0][1]*100,2))  
             elif model_choice == 'AdaBoost_93_20_year':
-                predictor = load_prediction_models("Models/ada_boost_random_year_93_20.pkl")
+                predictor = load_prediction_models("Models/ada_boost_model_random_year_93_20.pkl")
                 prediction = predictor.predict_proba(song)
                 st.write("Hit: ",round(prediction[0][1]*100,2))   
             elif model_choice == 'LightGBM_93_20_year':
