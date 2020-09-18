@@ -5,11 +5,12 @@ channels:
   - defaults
 dependencies:
   - pip
+  - python=3.7.7
   - pandas=1.1.1
   - numpy=1.19.1
   - matplotlib=3.3.1
   - joblib=0.16.0
-  - scikit-learn=0.23.2
+  - scikit-learn=0.22.1
   - seaborn=0.10.1
   - altair=4.1.0
   - spacy=2.3.2
@@ -17,12 +18,12 @@ dependencies:
   - requests=2.24.0
   - jupyterlab=2.2.6
   - notebook=6.1.1
-  - python=3.7.9
-  - ipykernel=5.3.4
+  - requests
   - pip:
     - spotipy==2.14.0
     - lightgbm==3.0.0
-    - billboard-py==6.1.0
+    - beautifulsoup4
+    - billboard.py
     - lyricsgenius==2.0.0
     - dataframe-image==0.1.1
     - langdetect==1.0.8
