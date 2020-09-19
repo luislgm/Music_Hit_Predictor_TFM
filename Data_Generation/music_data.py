@@ -399,9 +399,9 @@ class Music_Data:
                 song = self._genius.search_song(title_ge,artist=item["artist"])
 
             # Aunque podamos hacer la petición, se ha visto para este caso, ya que el número de llamadas por segundo es
-            # mayor que en los demás casos, que la búsqueda falla aunque si se exista la información, por lo que en para
-            # tratar de solventar este caso, se prueba a realizar la llamada un máximo de 4 veces, para intentar conseguir
-            # la información si es debido a este error.
+            # mayor que en los demás casos, que la búsqueda falla aunque si se exista la información, por lo que para
+            # tratar de solventar este problema, se prueba a realizar la llamada un máximo de 4 veces,
+            # para intentar conseguir la información si es debido a esta casuística.
             k = 1
             while not song:
                 try:

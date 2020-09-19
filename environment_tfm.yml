@@ -25,6 +25,5 @@ dependencies:
     - beautifulsoup4
     - billboard.py
     - lyricsgenius==2.0.0
-    - dataframe-image==0.1.1
     - langdetect==1.0.8
     - streamlit==0.66.0

@@ -8,11 +8,12 @@ import altair as alt
 import pandas as pd
 from dateutil.parser import parse
 
+# Definición de funciones para búsqueda de canciones con spotipy
 @st.cache(allow_output_mutation=True)
 def init_sp():
     # Sustituir 'sp_cid' y 'sp_secret' por los tokens generados según enlace
     # https://developer.spotify.com/documentation/general/guides/app-settings/
-    client_credentials_manager = SpotifyClientCredentials(client_id='sp_cid', client_secret='sp_cid') 
+    client_credentials_manager = SpotifyClientCredentials(client_id='sp_cid', client_secret='sp_secret') 
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager, requests_timeout=50)
     return sp
 
@@ -56,6 +57,7 @@ def find_song_year(sp, artist, title):
     except:
         st.write ("ERROR: Titulo no encontrado")
 
+# Definición de funciones para cargar las gráficas
 def load_genres_graph():
     df_count_genres_10 = pd.read_csv('https://raw.githubusercontent.com/luislgm/Music_Hit_Predictor_TFM/master/Data/top_10_genres_count.csv')
     df_genres_10 = pd.read_csv('https://raw.githubusercontent.com/luislgm/Music_Hit_Predictor_TFM/master/Data/Top_10_Genres.csv')
@@ -177,6 +179,19 @@ def load_albums_hits():
                         )
     return bar_albums_hits
 
+def load_hits_weeks_1():
+    df_hits_1_weeks = pd.read_csv('https://raw.githubusercontent.com/luislgm/Music_Hit_Predictor_TFM/master/Data/hits_time_1.csv')
+
+    bar_hits_1_weeks = alt.Chart(df_hits_1_weeks).mark_bar().encode(
+                            x="title",
+                            y="weeks",
+                            color='title',
+                            tooltip=["weeks","title","artist"]
+                            ).properties(
+                            width=500,
+                            height=550,
+                            )
+    return bar_hits_1_weeks
 
 def load_prediction_models(model_file):
     loaded_model = joblib.load(open(os.path.join(model_file),"rb"))
@@ -188,11 +203,13 @@ def main():
 
     st.title("Music Hit Predictor")
     st.subheader("Streamlit ML App")
-    # st.image(load_image("cars_images/car1.jpg"),width=300, caption='Images')
 
+    # Opciones del menú
     activities = ['Prediction','Graphics']
     choices = st.sidebar.selectbox("Select Activity",activities)
 
+    # para el apartado de graphics se cargan todas las graficas definidas en las funciones anteriores, se realiza
+    # de esta manera para hacer gráficas interactivas gracias a Altair
     if choices == 'Graphics':
         st.subheader("Graphics")
 
@@ -221,8 +238,13 @@ def main():
         st.markdown('### Top álbumes con más *hits*')
         bar_albums_hits = load_albums_hits()
         st.write(bar_albums_hits)
+        st.markdown('### Canciones con más tiempo en número 1')
+        bar_hits_1_weeks = load_hits_weeks_1()
+        st.write(bar_hits_1_weeks)
 
 
+
+    # Para esta opción, podremos elegir un modelo a usar y escogiendo una canción podremos hacer una predicción
     elif choices == 'Prediction':
         st.subheader("Prediction")
 
@@ -248,51 +270,51 @@ def main():
             if model_choice == 'RandomForest':
                 predictor = load_prediction_models("Models/forest_model_random.pkl")
                 prediction = predictor.predict_proba(song)
-                st.write("Hit: ",round(prediction[0][1]*100,2))   
+                st.write("Hit probability: ",round(prediction[0][1]*100,2))   
             elif model_choice == 'AdaBoost':
                 predictor = load_prediction_models("Models/ada_boost_model_random.pkl")
                 prediction = predictor.predict_proba(song)
-                st.write("Hit: ",round(prediction[0][1]*100,2)) 
+                st.write("Hit probability: ",round(prediction[0][1]*100,2)) 
             elif model_choice == 'LightGBM':
                 predictor = load_prediction_models("Models/light_gbm_model_random.pkl")
                 prediction = predictor.predict_proba(song)
-                st.write("Hit: ",round(prediction[0][1]*100,2))  
+                st.write("Hit probability: ",round(prediction[0][1]*100,2))  
             elif model_choice == 'RandomForest_Year':
                 predictor = load_prediction_models("Models/forest_model_random_year.pkl")
                 prediction = predictor.predict_proba(song)
-                st.write("Hit: ",round(prediction[0][1]*100,2))  
+                st.write("Hit probability: ",round(prediction[0][1]*100,2))  
             elif model_choice == 'AdaBoost_Year':
                 predictor = load_prediction_models("Models/ada_boost_model_random_year.pkl")
                 prediction = predictor.predict_proba(song)
-                st.write("Hit: ",round(prediction[0][1]*100,2))   
+                st.write("Hit probability: ",round(prediction[0][1]*100,2))   
             elif model_choice == 'LightGBM_Year':
-                predictor = load_prediction_models("Models/light_gbm_model_random_year.pkl")
+                predictor = load_prediction_models("Models/light_gbm_model_random_year_default.pkl")
                 prediction = predictor.predict_proba(song)
-                st.write("Hit: ",round(prediction[0][1]*100,2))    
+                st.write("Hit probability: ",round(prediction[0][1]*100,2))    
             elif model_choice == 'RandomForest_93_20':
                 predictor = load_prediction_models("Models/forest_model_random_93_20.pkl")
                 prediction = predictor.predict_proba(song)
-                st.write("Hit: ",round(prediction[0][1]*100,2))   
+                st.write("Hit probability: ",round(prediction[0][1]*100,2))   
             elif model_choice == 'AdaBoost_93_20':
                 predictor = load_prediction_models("Models/ada_boost_model_random_93_20.pkl")
                 prediction = predictor.predict_proba(song)
-                st.write("Hit: ",round(prediction[0][1]*100,2)) 
+                st.write("Hit probability: ",round(prediction[0][1]*100,2)) 
             elif model_choice == 'LightGBM_93_20':
                 predictor = load_prediction_models("Models/light_gbm_model_random_93_20.pkl")
                 prediction = predictor.predict_proba(song)
-                st.write("Hit: ",round(prediction[0][1]*100,2))  
+                st.write("Hit probability: ",round(prediction[0][1]*100,2))  
             elif model_choice == 'RandomForest_93_20_year':
                 predictor = load_prediction_models("Models/forest_model_random_year_93_20.pkl")
                 prediction = predictor.predict_proba(song)
-                st.write("Hit: ",round(prediction[0][1]*100,2))  
+                st.write("Hit probability: ",round(prediction[0][1]*100,2))  
             elif model_choice == 'AdaBoost_93_20_year':
                 predictor = load_prediction_models("Models/ada_boost_model_random_year_93_20.pkl")
                 prediction = predictor.predict_proba(song)
-                st.write("Hit: ",round(prediction[0][1]*100,2))   
+                st.write("Hit probability: ",round(prediction[0][1]*100,2))   
             elif model_choice == 'LightGBM_93_20_year':
                 predictor = load_prediction_models("Models/light_gbm_model_random_year_93_20.pkl")
                 prediction = predictor.predict_proba(song)
-                st.write("Hit: ",round(prediction[0][1]*100,2))  
+                st.write("Hit probability: ",round(prediction[0][1]*100,2))  
 
             st.success("Done")
 
