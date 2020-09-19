@@ -18,11 +18,10 @@ dependencies:
   - requests=2.24.0
   - jupyterlab=2.2.6
   - notebook=6.1.1
-  - requests
   - pip:
     - spotipy==2.14.0
     - lightgbm==3.0.0
-    - beautifulsoup4
+    - beautifulsoup4==4.6.0
     - billboard.py
     - lyricsgenius==2.0.0
     - langdetect==1.0.8
