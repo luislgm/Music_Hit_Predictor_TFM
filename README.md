@@ -92,7 +92,7 @@ Por último se hizo un pequeño análisis de lenguaje natural para los *hits* pe
 
 El análisis de estas letras de canciones se realiza en el cuaderno 2_analysis_lyrics.ipynb dentro del directorio <b>Hit_Data_Analysis</b>.
 
-Por último se incluye una pequeña aplicación gráfica que se ejecutará a través de streamlit y nos permitirá predecir cualquier canción de la que indiquemos su artista y titulo y seleccionando el modelo que queramos nos dirá la probabilidad de ser un *hit*. Esta aplicación se encuentra en el directorio raíz con el nombre app_streamlit.py y para ser ejecutada seguir los pasos del punto anterior.
+Por último se incluye una pequeña aplicación gráfica que se ejecutará a través de streamlit y nos permitirá hacer predicciones de cualquier canción de la que indiquemos su artista y titulo, y seleccionando el modelo que queramos nos dirá la probabilidad de ser un *hit*. Esta aplicación se encuentra en el directorio raíz con el nombre app_streamlit.py y para ser ejecutada seguir los pasos del punto siguiente.
 
 A continuación se muestran el orden de lectura de los *notebooks* de manera resumida.
  
@@ -147,4 +147,4 @@ Para hacer las predicciones, se debe elegir el modelo a utilizar. Los modelos so
   
 Tras seleccionar el modelo de interés, buscamos la canción que queremos predecir, insertando el artista y titulo, esperamos a que el resultado de la búsqueda sea el que esperábamos, y pulsamos sobre *evaluate*, podremos ver el porcentaje que tiene esa canción de ser un *hit* según las características musicales obtenidas.
 
-En el apartado *Graphics* podremos ver diferentes gráficas interactivas gracias a la librería de altair, para facilitar la ejecución de estas gráficas y no tener que generar los datos ni descargarlos de drive, se han alojado en el repositorio, facilitar el proceso de ejecución de la aplicación.
+En el apartado *Graphics* podremos ver diferentes gráficas interactivas gracias a la librería de altair, para facilitar la ejecución de estas gráficas y no tener que generar los datos ni descargarlos de drive, se han alojado en el repositorio.
