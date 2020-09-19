@@ -65,8 +65,8 @@ def load_genres_graph():
     select_type = alt.selection(type="single",encodings=["x"])
 
     line_genres = alt.Chart(df_genres_10).mark_line().encode(
-        x='year:T',
-        y='count',
+        x=alt.X('year',title="Years"),
+        y=alt.Y('count',title="Number of Hits"),
         color='genre'
     ).properties(
         width=650,
@@ -74,8 +74,8 @@ def load_genres_graph():
     ).interactive().transform_filter(select_type)
 
     bar_genres = alt.Chart(df_count_genres_10).mark_bar().encode(
-        x="genre",
-        y="count",
+        x=alt.X("genre",title="Genres"),
+        y=alt.Y("count",title="Number of Hits"),
         tooltip="count",
         color="genre"
     ).add_selection(select_type)
@@ -88,8 +88,8 @@ def load_top_artists_hits():
     df_artists_bar_data = pd.read_csv('https://raw.githubusercontent.com/luislgm/Music_Hit_Predictor_TFM/master/Data/top_10_artists_hits.csv')
 
     bar_artists_chart = alt.Chart(df_artists_bar_data).mark_bar().encode(
-                        x="artist",
-                        y="title",
+                        x=alt.X("artist",title="Artists"),
+                        y=alt.Y("title",title="Number of Hits"),
                         color="artist",
                         tooltip="title"
                         ).properties(
@@ -102,7 +102,7 @@ def load_top_weeks_hits():
     df_weeks_bar_data = pd.read_csv('https://raw.githubusercontent.com/luislgm/Music_Hit_Predictor_TFM/master/Data/top_10_weeks_hits.csv')
 
     bar_weeks_chart = alt.Chart(df_weeks_bar_data).mark_bar().encode(
-                        x="title",
+                        x=alt.X("title",title="Titles"),
                         y="weeks",
                         color="title",
                         tooltip="weeks"
@@ -119,8 +119,8 @@ def load_labels_evol_hits():
     select_type = alt.selection(type="single",encodings=["x"])
 
     line_labels = alt.Chart(df_label_10).mark_line().encode(
-        x='year_chart:T',
-        y='count',
+        x=alt.X('year_chart', title= "Years"),
+        y=alt.Y('count',title="Number of Hits"),
         color='label'
     ).properties(
         width=650,
@@ -128,8 +128,8 @@ def load_labels_evol_hits():
     ).interactive().transform_filter(select_type)
 
     bar_labels = alt.Chart(df_labels_bar_data).mark_bar().encode(
-        x="label",
-        y="id",
+        x=alt.X("label",title="Labels"),
+        y=alt.Y("id",title="Number of Hits"),
         tooltip="id",
         color="label"
     ).add_selection(select_type)
@@ -141,8 +141,8 @@ def load_collabs_time():
     df_collabs_time = pd.read_csv('https://raw.githubusercontent.com/luislgm/Music_Hit_Predictor_TFM/master/Data/collabs_time.csv')
 
     bar_collabs_chart = alt.Chart(df_collabs_time).mark_bar().encode(
-                        x="year_chart:T",
-                        y="collaboration",
+                        x=alt.X("year_chart",title="Years"),
+                        y=alt.Y("collaboration",title="Number of Collaborations"),
                         color='year_chart',
                         tooltip=["collaboration", "year_chart"]
                         ).properties(
@@ -155,8 +155,8 @@ def load_artists_collabs_hits():
     df_collabs_artists = pd.read_csv('https://raw.githubusercontent.com/luislgm/Music_Hit_Predictor_TFM/master/Data/artists_collabs_hits.csv')
 
     bar_artist_collabs = alt.Chart(df_collabs_artists).mark_bar().encode(
-                        x="artist",
-                        y="collaboration",
+                        x=alt.X("artist",title="Artists"),
+                        y=alt.Y("collaboration",title="Number of Collaborations"),
                         color='artist',
                         tooltip="collaboration"
                         ).properties(
@@ -169,8 +169,8 @@ def load_albums_hits():
     df_albums_hits = pd.read_csv('https://raw.githubusercontent.com/luislgm/Music_Hit_Predictor_TFM/master/Data/top_albums_hits.csv')
 
     bar_albums_hits = alt.Chart(df_albums_hits).mark_bar().encode(
-                        x="album",
-                        y="title",
+                        x=alt.X("album",title="Number of Albums"),
+                        y=alt.Y("title",title="Number of Tracks"),
                         color='album',
                         tooltip=["title","album","artist"]
                         ).properties(
@@ -183,7 +183,7 @@ def load_hits_weeks_1():
     df_hits_1_weeks = pd.read_csv('https://raw.githubusercontent.com/luislgm/Music_Hit_Predictor_TFM/master/Data/hits_time_1.csv')
 
     bar_hits_1_weeks = alt.Chart(df_hits_1_weeks).mark_bar().encode(
-                            x="title",
+                            x=alt.X("title",title="Titles"),
                             y="weeks",
                             color='title',
                             tooltip=["weeks","title","artist"]
