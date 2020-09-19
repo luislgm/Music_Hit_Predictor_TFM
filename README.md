@@ -53,7 +53,7 @@ En el proyecto se pueden observar las siguientes carpetas:
   - Models
   - Predictive_Modelling
  
-<b>Data</b>: será donde se almacenen todos los datos generados en formato csv, esta carpeta estará vacía en git. Los datos podrán ser generados siguiendo los notebooks de la carpeta Data_Generation. Por comodidad y, ya que la generación de datos es un proceso que requiere bastante tiempo, se facilitan los ficheros en el siguiente [enlace](https://drive.google.com/drive/folders/1NyCAPqVdK4ZcOPovaSirImuEoe7fceAl?usp=sharing) de Google Drive.
+<b>Data</b>: será donde se almacenen todos los datos generados en formato csv, esta carpeta estará vacía en git. Los datos podrán ser generados siguiendo los notebooks de la carpeta Data_Generation. Por comodidad y ya que la generación de datos es un proceso que requiere bastante tiempo, se facilitan los ficheros en el siguiente [enlace](https://drive.google.com/drive/folders/1NyCAPqVdK4ZcOPovaSirImuEoe7fceAl?usp=sharing) de Google Drive.
 
 <b>Data_Generation</b>: contiene todos los cuadernos y paquetes necesarios para la realización de la extracción de los datos.
 
