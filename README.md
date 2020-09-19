@@ -43,6 +43,8 @@ Jupyter-lab
 Para la extracción de los datos, es necesario estar identificado y tener los *tokens* pertinentes para el uso de la API de Spotify y la API de Genius.
   - Para crear un "client id" (client_id, client_secret) para usar la API de spotify, seguir los pasos que se indican en el [enlace](https://developer.spotify.com/documentation/general/guides/app-settings/).
   - Para crear un "client_id" para usar la API de Genius. Es necesario seguir los pasos que se indican en el [enlace](https://docs.genius.com/#/getting-started-h1).
+
+Por comodidad y debido a que la extracción de los datos es un proceso que puede llevar mucho tiempo, se facilitan todos los datos en el siguiente enlace: [link](https://drive.google.com/drive/folders/1NyCAPqVdK4ZcOPovaSirImuEoe7fceAl?usp=sharing)
   
 ## Estructura del proyecto
  
