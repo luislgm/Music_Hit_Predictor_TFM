@@ -147,4 +147,4 @@ Para hacer las predicciones, se debe elegir el modelo a utilizar. Los modelos so
   
 Tras seleccionar el modelo de interés, buscamos la canción que queremos predecir, insertando el artista y titulo, esperamos a que el resultado de la búsqueda sea el que esperábamos, y pulsamos sobre *evaluate*, podremos ver el porcentaje que tiene esa canción de ser un *hit* según las características musicales obtenidas.
 
-En el apartado *Graphics* podremos ver diferentes gráficas interactivas gracias a la librería de altair, para facilitar la ejecución de estas gráficas y no tener que generar los datos ni descargarlos de drive, se han alojado en el repositorio.
+En el apartado *Graphics* podremos ver diferentes gráficas interactivas gracias a la librería de altair. Para facilitar la ejecución de estas gráficas y no tener que generar los datos ni descargarlos de drive, se han alojado en el repositorio.
